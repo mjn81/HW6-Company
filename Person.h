@@ -44,9 +44,9 @@ public:
 
     Address getAddress();
 
-    Person &operator=(const Person &person);
+    virtual Person &operator=(const Person &person);
 
-    bool validate();
+    virtual bool validate();
 };
 
 

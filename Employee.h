@@ -47,6 +47,10 @@ public:
 
     void setWorkDone(int workDone);
 
+    bool validate() override;
+
+    int calculateSalary();
+
 };
 
 

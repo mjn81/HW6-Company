@@ -2,15 +2,21 @@
 
 #include "Employee.h"
 
-Employee::Employee(std::string id, std::string name, Address add, int hw, int sph, int wtd, int wd)
+using namespace std;
+
+Employee::Employee(string id, string name, Address add, int hw, int sph, int wtd, int wd)
 : Person(id , name , add) {
+    if(!validate()){
+        cout<<"invalid id"<<endl;
+        exit(-1);
+    }
     hourWork = hw;
     salaryPerHour = sph;
     workToDo = wtd;
     workDone = wd;
 }
 
-Employee::Employee(const Employee &cp) : Person(cp) {
+Employee::Employee(const Employee &cp) : Person(cp){
     hourWork = cp.hourWork;
     salaryPerHour = cp.salaryPerHour;
     workToDo = cp.workToDo;
@@ -59,5 +65,17 @@ int Employee::getWorkDone() const {
 void Employee::setWorkDone(int workDone) {
     Employee::workDone = workDone;
 }
+
+bool Employee::validate() {
+    if (id[2] != '*')
+        return false;
+    return Person::validate();
+}
+
+int Employee::calculateSalary() {
+
+    return 0;
+}
+
 
 
