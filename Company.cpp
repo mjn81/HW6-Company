@@ -27,5 +27,39 @@ Company::~Company() {
         delete employees[i];
     }
     delete boss;
-    delete employees;
+    delete [] employees;
+}
+
+int Company::getBudget() const {
+    return budget;
+}
+
+void Company::setBudget(int budget) {
+    Company::budget = budget;
+}
+
+Employee **Company::getEmployees() const {
+    return employees;
+}
+
+void Company::setEmployees(Employee **employees) {
+    Company::employees = employees;
+}
+
+Boss *Company::getBoss() const {
+    return boss;
+}
+
+void Company::setBoss(Boss *boss) {
+    Company::boss = boss;
+}
+
+Employee &Company::maxEfficiency() {
+    Employee &temp = *employees[0];
+    for (int i = 1; i < boss->getNumberOfEmployees(); ++i) {
+        if (employees[i]->efficiency() > temp.efficiency()){
+            temp = *employees[i];
+        }
+    }
+    return temp;
 }

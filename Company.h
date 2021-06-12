@@ -6,6 +6,13 @@
 #include "Boss.h"
 
 class Company {
+
+    friend std::ostream &operator<<(std::ostream &out , const Company& cp){
+        out<<*(cp.boss);
+
+        return out;
+    }
+
 private:
     int budget;
     Employee **employees;
@@ -17,6 +24,21 @@ public:
     Company(const Company& cp);
 
     ~Company();
+
+    int getBudget() const;
+
+    void setBudget(int budget);
+
+    Employee **getEmployees() const;
+
+    void setEmployees(Employee **employees);
+
+    Boss *getBoss() const;
+
+    void setBoss(Boss *boss);
+
+    Employee &maxEfficiency();
+
 
 };
 

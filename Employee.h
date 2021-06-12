@@ -20,7 +20,7 @@ class Employee : public Person{
     }
 
 
-protected:
+private:
     int hourWork , salaryPerHour , workToDo , workDone;
 public:
     Employee() = default;
