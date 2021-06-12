@@ -44,7 +44,9 @@ public:
 
     Address getAddress();
 
+    Person &operator=(const Person &person);
 
+    bool validate();
 };
 
 
