@@ -8,13 +8,7 @@ Boss::Boss(const Boss &cp) : Employee(cp) {
 }
 
 Boss &Boss::operator=(const Boss &boss) {
-    id = boss.id;
-    name = boss.name;
-    address = boss.address;
-    hourWork = boss.hourWork;
-    salaryPerHour = boss.salaryPerHour;
-    workToDo = boss.workToDo;
-    workDone = boss.workDone;
+    Employee::operator=(boss);
     numberOfEmployees = boss.numberOfEmployees;
     return *this;
 }

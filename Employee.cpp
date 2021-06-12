@@ -24,9 +24,7 @@ Employee::Employee(const Employee &cp) : Person(cp){
 }
 
 Employee &Employee::operator=(const Employee &e){
-    id = e.id;
-    name = e.name;
-    address = e.address;
+    Person::operator=(e);
     hourWork = e.hourWork;
     salaryPerHour = e.salaryPerHour;
     workToDo = e.workToDo;

@@ -22,6 +22,7 @@ class Boss : public Employee {
 private:
     int numberOfEmployees;
 public:
+    Boss() = default;
 
     Boss(const std::string &id, const std::string &name, const Address &add, int hw, int sph, int wtd, int wd,
          int numberOfEmployees);
