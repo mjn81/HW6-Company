@@ -22,7 +22,7 @@ class Person {
         return in;
     }
 
-private:
+protected:
     std::string id, name;
     Address address;
 public:

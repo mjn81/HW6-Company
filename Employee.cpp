@@ -4,16 +4,16 @@
 
 using namespace std;
 
-Employee::Employee(string id, string name, Address add, int hw, int sph, int wtd, int wd)
+Employee::Employee(string id ,string name, Address add, int hw, int sph, int wtd, int wd)
 : Person(id , name , add) {
-    if(!validate()){
-        cout<<"invalid id"<<endl;
-        exit(-1);
-    }
     hourWork = hw;
     salaryPerHour = sph;
     workToDo = wtd;
     workDone = wd;
+    if(!validate()){
+        cout<<"invalid id"<<endl;
+        exit(-1);
+    }
 }
 
 Employee::Employee(const Employee &cp) : Person(cp){
@@ -76,7 +76,7 @@ double Employee::calculateSalary() const {
 }
 
 double Employee::efficiency() const {
-    return (((double)workDone / workToDo) * 100) * hourWork;
+    return (((double)workDone / workToDo) * 100) / hourWork;
 }
 
 

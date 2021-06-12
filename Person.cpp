@@ -4,13 +4,13 @@
 using namespace std;
 
 Person::Person(string i, string n, const Address &ad) {
+    id = i;
+    name = n;
+    address = ad;
     if(!validate()){
         cout<<"invalid id"<<endl;
         exit(-1);
     }
-    id = i;
-    name = n;
-    address = ad;
 }
 
 Person::Person(const Person &cp) {
@@ -51,7 +51,7 @@ Person &Person::operator=(const Person &person) {
 }
 
 bool Person::validate() {
-    int len = id.length();
+    int len = id.size();
     if (len<8 || len >10 )
         return false;
     int mpl = len - 7;

@@ -14,7 +14,7 @@ Company::Company(int bu, const Boss &b, Employee **emp) : budget(bu) {
 }
 
 Company::Company(const Company &cp) {
-    budget =cp.budget;
+    budget = cp.budget;
     boss = new Boss(*cp.boss);
     employees = new Employee *[boss->getNumberOfEmployees()];
     for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
@@ -27,7 +27,7 @@ Company::~Company() {
         delete employees[i];
     }
     delete boss;
-    delete [] employees;
+    delete[] employees;
 }
 
 int Company::getBudget() const {
@@ -54,12 +54,35 @@ void Company::setBoss(Boss *boss) {
     Company::boss = boss;
 }
 
-Employee &Company::maxEfficiency() {
-    Employee &temp = *employees[0];
+Employee *Company::maxEfficiency() {
+    Employee *temp = employees[0];
     for (int i = 1; i < boss->getNumberOfEmployees(); ++i) {
-        if (employees[i]->efficiency() > temp.efficiency()){
-            temp = *employees[i];
+        if (employees[i]->efficiency() > temp->efficiency()) {
+            temp = new Employee(*employees[i]);
         }
     }
     return temp;
 }
+
+double Company::averageEfficiency() {
+    double average = 0;
+    for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
+        average += employees[i]->efficiency();
+    }
+    average /= (boss->getNumberOfEmployees());
+    return average;
+}
+
+void Company::changeBoss() {
+    if (boss->efficiency() < 40) {
+        Employee *max = maxEfficiency();
+        for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
+            if (employees[i]->efficiency() == max->efficiency()) {
+                Boss *bb = dynamic_cast<Boss *>(max);
+                boss = bb;
+                break;
+            }
+        }
+    }
+}
+
