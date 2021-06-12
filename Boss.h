@@ -28,6 +28,13 @@ public:
 
     Boss(const Boss&cp);
 
+    Boss &operator=(const Boss&boss);
+
+    int getNumberOfEmployees() const;
+
+    void setNumberOfEmployees(int numberOfEmployees);
+
+    double calculateSalary() const override;
 };
 
 
