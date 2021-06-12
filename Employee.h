@@ -14,13 +14,13 @@ class Employee : public Person{
     }
 
     friend std::istream &operator>>(std::istream &in , Employee &employee){
-        in>>employee.id>>employee.name>>employee.address>>employee.hourWork>>employee.salaryPerHour
+        in>> static_cast<Person&>(employee) >>employee.hourWork>>employee.salaryPerHour
         >>employee.workToDo>>employee.workDone;
         return in;
     }
 
 
-private:
+protected:
     int hourWork , salaryPerHour , workToDo , workDone;
 public:
     Employee() = default;
