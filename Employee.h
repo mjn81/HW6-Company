@@ -49,7 +49,9 @@ public:
 
     bool validate() override;
 
-    int calculateSalary();
+    double calculateSalary() const;
+
+    double efficiency() const;
 
 };
 

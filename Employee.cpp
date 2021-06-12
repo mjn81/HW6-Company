@@ -72,9 +72,13 @@ bool Employee::validate() {
     return Person::validate();
 }
 
-int Employee::calculateSalary() {
+double Employee::calculateSalary() const {
+    double salary =salaryPerHour * hourWork * ((double)workDone /  workToDo);
+    return salary;
+}
 
-    return 0;
+double Employee::efficiency() const {
+    return (((double)workDone / workToDo) * 100) * hourWork;
 }
 
 
