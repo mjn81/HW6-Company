@@ -1,6 +1,5 @@
 #include <iostream>
-#include "Employee.h"
-#include "Boss.h"
+
 #include "Company.h"
 using namespace std;
 
@@ -11,7 +10,7 @@ int main() {
 
     auto **employee = new Employee *[boss->getNumberOfEmployees()];
     employee[0] = new Employee( "93*r11111","Reza Moradi", *(new Address("Iran", "Shiraz", "Fattah")), 5, 85000, 18 , 50);
-    employee[1] = new Employee( "90*m11111","Mehran Asadi", *(new Address("Iran", "Shiraz", "Fattah")), 9, 100000, 20,
+    employee[1] = new Employee( "93*m11111","Mehran Asadi", *(new Address("Iran", "Shiraz", "Fattah")), 9, 100000, 20,
                                8);
     employee[2] = new Employee("93*v12112","Ahmad Ahmadi",  *(new Address("Iran", "Shiraz", "Fattah")), 6, 70000, 30,
                                15);
