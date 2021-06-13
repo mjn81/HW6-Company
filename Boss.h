@@ -35,7 +35,7 @@ public:
 
     void setNumberOfEmployees(int numberOfEmployees);
 
-    double calculateSalary() const override;
+    double calculateSalary() const;
 };
 
 

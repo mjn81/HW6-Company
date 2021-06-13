@@ -49,7 +49,7 @@ public:
 
     bool validate() override;
 
-    virtual double calculateSalary() const;
+    double calculateSalary() const;
 
     double efficiency() const;
 

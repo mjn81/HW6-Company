@@ -8,16 +8,21 @@
 class Company {
 
     friend std::ostream &operator<<(std::ostream &out , const Company& cp){
-        out<<*(cp.boss)<<std::endl<<std::endl;
+
+        out << *(cp.boss) << std::endl << std::endl;
         for (int i = 0; i < cp.boss->getNumberOfEmployees(); ++i) {
-            out << *(cp.employees[i]) << std::endl << cp.employees[i]->efficiency() << std::endl << std::endl;
+                    out << *(cp.employees[i]) << std::endl << cp.employees[i]->efficiency() << std::endl << std::endl;
+
         }
         return out;
     }
 
-    friend std::istream &operator>>(std::istream &in , const Company& cp){
-
-
+    friend std::istream &operator>>(std::istream &in , Company& cp){
+        in>>*(cp.boss);
+        for (int i = 0; i < cp.boss->getNumberOfEmployees(); ++i) {
+            in>>*(cp.employees[i]);
+        }
+        in>>cp.budget;
         return in;
     }
 
@@ -58,7 +63,7 @@ public:
 
     bool isEnoughBudget();
 
-    void WriteFile() const;
+    void writeFile() const;
 };
 
 

@@ -31,8 +31,9 @@ int main() {
                                25);
     Company company(300000 , *boss, employee);
     company.gift();
-    cout << company << endl<<endl <<endl<<*company.maxEfficiency() << endl << company.isEnoughBudget();
-
-
+    cout<<company<<endl<<boss->calculateSalary()<<endl << company.getEmployees()[7]->calculateSalary()<<endl<<endl<<endl;
+    company.changeBoss();
+    cout << company << endl << company.getEmployees()[7]->calculateSalary()<< endl  << company.getBoss()->calculateSalary()<<endl<<endl;
+    company.writeFile();
     return 0;
 }

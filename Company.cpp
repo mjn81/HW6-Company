@@ -77,24 +77,31 @@ double Company::averageEfficiency() {
 
 void Company::changeBoss() {
     if (boss->efficiency() < 40) {
-        Employee *max = maxEfficiency();
+        Employee *maxEmp = maxEfficiency();
         for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
-            if (employees[i]->efficiency() == max->efficiency()) {
-
+            if (employees[i]->efficiency() ==  maxEmp->efficiency()) {
+                int number = boss->getNumberOfEmployees();
+                employees[i] = boss;
+                boss = static_cast<Boss *>(maxEmp);
+                boss->setNumberOfEmployees(number);
+                break;
             }
         }
     }
 }
 
 void Company::gift() {
+    Employee *max = maxEfficiency();
+    for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
+        if (max->efficiency() == employees[i]->efficiency())
+            employees[i]->setHourWork((employees[i]->getHourWork()+10));
+    }
     for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
         string sal = employees[i]->getId().substr(0 , 2);
         if (sal <"90"){
             employees[i]->setHourWork((employees[i]->getHourWork()+5));
         }
-        if (maxEfficiency()->efficiency() == employees[i]->efficiency()){
-            employees[i]->setHourWork((employees[i]->getHourWork()+10));
-        }
+
     }
 }
 
@@ -117,13 +124,13 @@ bool Company::isEnoughBudget() {
     return true;
 }
 
-void Company::WriteFile() const {
+void Company::writeFile() const {
     ofstream writer;
     writer.open("output.txt");
     for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
         writer<<" ID : "<<employees[i]->getId()<<" Name : "<<employees[i]->getName()
         <<" Efficiency : "<<employees[i]->efficiency()
-        <<" Salary : "<<employees[i]->calculateSalary();
+        <<" Salary : "<<employees[i]->calculateSalary()<<endl;
     }
 }
 
