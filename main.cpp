@@ -30,8 +30,8 @@ int main() {
     employee[9] = new Employee( "87*ox19280", "Mohammad Rad",  *(new Address("Iran", "Shiraz", "Fattah")), 2, 40000, 30,
                                25);
     Company company(300000 , *boss, employee);
-    cout << company << endl<<endl <<endl<<*company.maxEfficiency();
-
+    company.gift();
+    cout << company << endl<<endl <<endl<<*company.maxEfficiency() << endl << company.isEnoughBudget();
 
 
     return 0;

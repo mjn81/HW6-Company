@@ -3,6 +3,8 @@
 //
 
 #include "Company.h"
+#include <iostream>
+#include <fstream>
 using namespace std;
 
 Company::Company(int bu, const Boss &b, Employee **emp) : budget(bu) {
@@ -78,9 +80,7 @@ void Company::changeBoss() {
         Employee *max = maxEfficiency();
         for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
             if (employees[i]->efficiency() == max->efficiency()) {
-                Boss *bb = dynamic_cast<Boss *>(max);
-                boss = bb;
-                break;
+
             }
         }
     }
@@ -115,5 +115,15 @@ bool Company::isEnoughBudget() {
         return false;
     }
     return true;
+}
+
+void Company::WriteFile() const {
+    ofstream writer;
+    writer.open("output.txt");
+    for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
+        writer<<" ID : "<<employees[i]->getId()<<" Name : "<<employees[i]->getName()
+        <<" Efficiency : "<<employees[i]->efficiency()
+        <<" Salary : "<<employees[i]->calculateSalary();
+    }
 }
 

@@ -51,7 +51,7 @@ Person &Person::operator=(const Person &person) {
 }
 
 bool Person::validate() {
-    int len = id.size();
+    int len = id.length();
     if (len<8 || len >10 )
         return false;
     int mpl = len - 7;

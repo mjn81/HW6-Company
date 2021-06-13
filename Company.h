@@ -57,6 +57,8 @@ public:
     void payForService();
 
     bool isEnoughBudget();
+
+    void WriteFile() const;
 };
 
 
