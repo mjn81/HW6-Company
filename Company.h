@@ -10,13 +10,13 @@ class Company {
     // IO operators
 
     friend std::ostream &operator<<(std::ostream &out, const Company &cp) {
-        Company temp = cp;
+          auto *temp = new Company(cp);
         bool flag = true;
         while (flag) {
             flag = false;
-            for (int i = 0; i < temp.boss->getNumberOfEmployees() - 1; ++i) {
-                if (temp.employees[i]->getName() > temp.employees[i + 1]->getName()) {
-                    std::swap(temp.employees[i], temp.employees[i + 1]);
+            for (int i = 0; i < temp->boss->getNumberOfEmployees() - 1; ++i) {
+                if (temp->employees[i]->getName() > temp->employees[i + 1]->getName()) {
+                    std::swap(temp->employees[i], temp->employees[i + 1]);
                     flag = true;
                 }
             }
@@ -24,18 +24,18 @@ class Company {
         flag = true;
         while (flag) {
             flag = false;
-            for (int i = 0; i < temp.boss->getNumberOfEmployees() - 1; ++i) {
-                if (temp.employees[i]->getId().substr(0, 2) < temp.employees[i + 1]->getId().substr(0, 2)) {
-                    std::swap(temp.employees[i], temp.employees[i + 1]);
+            for (int i = 0; i < temp->boss->getNumberOfEmployees() - 1; ++i) {
+                if (temp->employees[i]->getId().substr(0, 2) < temp->employees[i + 1]->getId().substr(0, 2)) {
+                    std::swap(temp->employees[i], temp->employees[i + 1]);
                     flag = true;
                 }
             }
         }
 
 
-        out << "Boss : "<<*(temp.boss) << std::endl << std::endl;
-        for (int i = 0; i < temp.boss->getNumberOfEmployees(); ++i) {
-            out << *(temp.employees[i]) << std::endl << temp.employees[i]->efficiency() << std::endl << std::endl;
+        out << "Boss : "<<*(temp->boss) << std::endl << std::endl;
+        for (int i = 0; i < temp->boss->getNumberOfEmployees(); ++i) {
+            out << *(temp->employees[i]) << std::endl << temp->employees[i]->efficiency() << std::endl << std::endl;
 
         }
         return out;

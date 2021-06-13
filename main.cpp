@@ -35,7 +35,7 @@ int main() {
                                25);
     Company company(370000, *boss, employee);
     company.gift();
-    cout << " gift : " << endl << endl;
+    cout << "gift : " << endl;
     cout << company << endl << endl;
     company.payForService();
     cout << " pay for service : " << endl << endl;
