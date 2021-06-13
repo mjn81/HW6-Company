@@ -9,7 +9,6 @@ class Company {
 
     friend std::ostream &operator<<(std::ostream &out, const Company &cp) {
         Company temp = cp;
-        Employee *emp;
         bool flag = true;
         while (flag) {
             flag = false;
