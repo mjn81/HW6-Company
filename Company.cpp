@@ -3,7 +3,7 @@
 //
 
 #include "Company.h"
-
+using namespace std;
 
 Company::Company(int bu, const Boss &b, Employee **emp) : budget(bu) {
     boss = new Boss(b);
@@ -84,5 +84,36 @@ void Company::changeBoss() {
             }
         }
     }
+}
+
+void Company::gift() {
+    for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
+        string sal = employees[i]->getId().substr(0 , 2);
+        if (sal <"90"){
+            employees[i]->setHourWork((employees[i]->getHourWork()+5));
+        }
+        if (maxEfficiency()->efficiency() == employees[i]->efficiency()){
+            employees[i]->setHourWork((employees[i]->getHourWork()+10));
+        }
+    }
+}
+
+void Company::payForService() {
+    for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
+        if (employees[i]->getAddress().getCity() != "Tehran"){
+            employees[i]->setHourWork(employees[i]->getHourWork()+7);
+        }
+    }
+}
+
+bool Company::isEnoughBudget() {
+    double totalMoney = 0;
+    for (int i = 0; i < boss->getNumberOfEmployees(); ++i) {
+        totalMoney += employees[i]->calculateSalary();
+    }
+    if (budget< totalMoney){
+        return false;
+    }
+    return true;
 }
 

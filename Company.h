@@ -8,7 +8,7 @@
 class Company {
 
     friend std::ostream &operator<<(std::ostream &out , const Company& cp){
-        out<<*(cp.boss);
+        out<<*(cp.boss)<<std::endl<<std::endl;
         for (int i = 0; i < cp.boss->getNumberOfEmployees(); ++i) {
             out << *(cp.employees[i]) << std::endl << cp.employees[i]->efficiency() << std::endl << std::endl;
         }
@@ -52,6 +52,11 @@ public:
 
     void changeBoss();
 
+    void gift();
+
+    void payForService();
+
+    bool isEnoughBudget();
 };
 
 
