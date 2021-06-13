@@ -11,6 +11,7 @@
 
 class Person {
 
+    // IO operators
 
     friend std::ostream &operator<<(std::ostream &out, const Person &p) {
         out << "Id : " << p.id << " Name : " << p.name << " Address : " << p.address << std::endl;
@@ -26,11 +27,16 @@ protected:
     std::string id, name;
     Address address;
 public:
+
+    // Constructors
+
     Person() = default;
 
     Person(std::string i, std::string n, const Address &ad);
 
     Person(const Person &cp);
+
+    // getters & setters
 
     void setId(std::string i);
 
@@ -44,7 +50,11 @@ public:
 
     Address getAddress();
 
+    // assignment operator
+
     virtual Person &operator=(const Person &person);
+
+    // validate
 
     virtual bool validate();
 };

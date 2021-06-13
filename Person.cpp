@@ -7,8 +7,8 @@ Person::Person(string i, string n, const Address &ad) {
     id = i;
     name = n;
     address = ad;
-    if(!validate()){
-        cout<<"invalid id"<<endl;
+    if (!validate()) {
+        cout << "invalid id" << endl;
         exit(-1);
     }
 }
@@ -52,22 +52,22 @@ Person &Person::operator=(const Person &person) {
 
 bool Person::validate() {
     int len = id.length();
-    if (len<8 || len >10 )
+    if (len < 8 || len > 10)
         return false;
     int mpl = len - 7;
-    string tfn = id.substr(0 , 2); //tfn = two first numbers
-    string mpc = id.substr(2 , mpl); //mpc = middle part character
-    string lpn = id.substr(mpl+2 , 5); // lpn = last part numbers
-    if (tfn <"84" || tfn>"99"){
+    string tfn = id.substr(0, 2); //tfn = two first numbers
+    string mpc = id.substr(2, mpl); //mpc = middle part character
+    string lpn = id.substr(mpl + 2, 5); // lpn = last part numbers
+    if (tfn < "84" || tfn > "99") { // checks the limitation of two first parts
         return false;
     }
-    for (int i = 0; i < mpl; ++i) {
-        if (mpc[i]>47 && mpc[i]<58){
+    for (int i = 0; i < mpl; ++i) { // checks if the 1 - 3 next parts are number -> false
+        if (mpc[i] > 47 && mpc[i] < 58) {
             return false;
         }
     }
-    for (int i = 0; i < 5; ++i) {
-        if (lpn[i] == 53 || lpn[i]<48 || lpn[i] > 57){
+    for (int i = 0; i < 5; ++i) { // checks if the 5 last parts are not numbers -> false
+        if (lpn[i] == 53 || lpn[i] < 48 || lpn[i] > 57) {
             return false;
         }
     }

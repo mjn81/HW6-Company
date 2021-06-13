@@ -5,31 +5,40 @@
 #include <iostream>
 #include "Person.h"
 
-class Employee : public Person{
+class Employee : public Person {
 
-    friend std::ostream &operator<<(std::ostream &os, const Employee &employee){
+    // IO operators
+
+    friend std::ostream &operator<<(std::ostream &os, const Employee &employee) {
         os << static_cast<const Person &>(employee) << " hourWork: " << employee.hourWork << " salaryPerHour: "
            << employee.salaryPerHour << " workToDo: " << employee.workToDo << " workDone: " << employee.workDone;
         return os;
     }
 
-    friend std::istream &operator>>(std::istream &in , Employee &employee){
-        in>> static_cast<Person&>(employee) >>employee.hourWork>>employee.salaryPerHour
-        >>employee.workToDo>>employee.workDone;
+    friend std::istream &operator>>(std::istream &in, Employee &employee) {
+        in >> static_cast<Person &>(employee) >> employee.hourWork >> employee.salaryPerHour
+           >> employee.workToDo >> employee.workDone;
         return in;
     }
 
 
 private:
-    int hourWork , salaryPerHour , workToDo , workDone;
+    int hourWork, salaryPerHour, workToDo, workDone;
 public:
+
+    // Constructors
+
     Employee() = default;
 
-    Employee(std::string id , std::string name , Address add , int hw , int sph , int wtd , int wd);
+    Employee(std::string id, std::string name, Address add, int hw, int sph, int wtd, int wd);
 
     Employee(const Employee &cp);
 
-    Employee &operator=(const Employee&e);
+    // assignment op
+
+    Employee &operator=(const Employee &e);
+
+    // getters & setters
 
     int getHourWork() const;
 
@@ -47,7 +56,11 @@ public:
 
     void setWorkDone(int workDone);
 
+    // validate override
+
     bool validate() override;
+
+    // util funcs
 
     double calculateSalary() const;
 

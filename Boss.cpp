@@ -22,7 +22,7 @@ void Boss::setNumberOfEmployees(int numberOfEmployees) {
 }
 
 double Boss::calculateSalary() const {
-    return Employee::calculateSalary()*1.15;
+    return Employee::calculateSalary() * 1.15;
 }
 
 

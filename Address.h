@@ -7,7 +7,7 @@
 #include <iostream>
 
 class Address {
-
+    // IO operators
     friend std::ostream &operator<<(std::ostream &out, const Address &address) {
         out << address.street << '/' << address.city << '/' << address.country;
         return out;
@@ -23,6 +23,7 @@ class Address {
 private:
     std::string country, city, street;
 public:
+    // Constructors
     Address() = default;
 
     Address(std::string co, std::string ci, std::string st) :
@@ -30,6 +31,7 @@ public:
             city(ci),
             street(st) {}
 
+    // getter & setters
     void setStreet(std::string st);
 
     void setCity(std::string ci);
@@ -43,7 +45,6 @@ public:
     std::string getCountry();
 
 };
-
 
 
 #endif //HW6_2_ADDRESS_H

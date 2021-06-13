@@ -7,6 +7,8 @@
 
 class Company {
 
+    // IO operators
+
     friend std::ostream &operator<<(std::ostream &out, const Company &cp) {
         Company temp = cp;
         bool flag = true;
@@ -31,7 +33,7 @@ class Company {
         }
 
 
-        out << *(temp.boss) << std::endl << std::endl;
+        out << "Boss : "<<*(temp.boss) << std::endl << std::endl;
         for (int i = 0; i < temp.boss->getNumberOfEmployees(); ++i) {
             out << *(temp.employees[i]) << std::endl << temp.employees[i]->efficiency() << std::endl << std::endl;
 
@@ -55,11 +57,17 @@ private:
     Boss *boss;
 public:
 
+    // Constructors
+
     Company(int bu, const Boss &b, Employee **emp);
 
     Company(const Company &cp);
 
+    // Destructors
+
     ~Company();
+
+    // getters & setters
 
     int getBudget() const;
 
@@ -73,6 +81,8 @@ public:
 
     void setBoss(Boss *boss);
 
+    // util funcs
+
     Employee *maxEfficiency();
 
     double averageEfficiency();
@@ -84,6 +94,8 @@ public:
     void payForService();
 
     bool isEnoughBudget();
+
+    // writeFiles
 
     void writeFile() const;
 };
